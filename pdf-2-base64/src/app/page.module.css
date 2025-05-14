@@ -16,7 +16,14 @@
   font-family: var(--font-geist-sans);
 }
 
-
+.div {
+  font-size: 8px;
+  display: block;
+  width: 300px;
+  color: yellow;
+  inline-size: 600px;
+  overflow-wrap: break-word;
+}
 
 .main {
   display: flex;

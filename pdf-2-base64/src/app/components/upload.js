@@ -4,10 +4,11 @@ import {useState} from 'react';
 import { useEffect } from 'react';
 
 
-export default function Upload() {
+export default function Upload({prop}) {
     const [encodedString, SetEncodedString] = useState('')
     useEffect(() => {
         //triggered when state changes
+        prop(encodedString);
         console.log(encodedString);
     }, [encodedString]);
 
