@@ -1,49 +1,50 @@
 'use client'
 
 import {useState} from 'react';
+import { useEffect } from 'react';
 
 
 export default function Upload() {
-    const [fileContent, SetFileContent] = useState(null);
+    const [encodedString, SetEncodedString] = useState('')
+    useEffect(() => {
+        //triggered when state changes
+        console.log(encodedString);
+    }, [encodedString]);
 
     function handleFile() {
-       
         const file = document.getElementById("pdf-file").files[0];
         const reader = new FileReader();
-
-
-        reader.addEventListener(
-            "load",
-            () => {
-                SetFileContent(reader.result);
-            },
-            false,
-        );
 
         reader.addEventListener(
             "loadend",
             () => {
-                EncodePDF();
+                EncodePDF(reader.result);
             },
             false,
         );
 
         if (file) {
-            reader.readAsDataURL(file); // when done reading pdf trigger event
+            reader.readAsArrayBuffer(file); // when done reading pdf trigger event
         }
-
-
     };
 
-    function EncodePDF() {
-        const buffer = fileContent;
-        console.log(buffer)
+    function EncodePDF(result) {
+        const buffer = result;
+        const binaryString = arrayBufferToBinaryString(buffer);
+        const base64String = btoa(binaryString);
+        SetEncodedString(base64String);
     };
 
-    function DecodePDF() {
 
-    }
-    
+    function arrayBufferToBinaryString(buffer) { //helper function
+        let binaryString = '';
+        const bytes = new Uint8Array(buffer);
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+          binaryString += String.fromCharCode(bytes[i]);
+        }
+        return binaryString;
+      }
 
     return (
         <>
