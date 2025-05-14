@@ -20,7 +20,7 @@
   font-size: 8px;
   display: block;
   width: 300px;
-  color: yellow;
+  color: rgb(17, 255, 0);
   inline-size: 600px;
   overflow-wrap: break-word;
 }
