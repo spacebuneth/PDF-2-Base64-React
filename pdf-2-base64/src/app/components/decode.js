@@ -39,6 +39,10 @@ function base64ToBlob(base64, contentType = "application/pdf",
 }
 
     function download() {
+        if (!FileBlob) {
+          alert("No File Selected!")
+          return
+        }
         const blob = FileBlob;
         const link = document.createElement('a')
         const url = URL.createObjectURL(blob)
