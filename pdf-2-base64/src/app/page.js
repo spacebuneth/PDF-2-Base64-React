@@ -2,20 +2,28 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Encode from "./components/encode";
+import Decode from "./components/decode";
 import { useState } from "react";
 
 export default function Home() {
 
-  const [FileString, SetFileString] = useState('Print Base64');//for lifting up state from child component
+  const [FileString, SetFileString] = useState(null);//for lifting up state from child component
 
       function copyToClipboard() {
-        navigator.clipboard.writeText(FileString);    
+        if (FileString) {
+          navigator.clipboard.writeText(FileString);
+          alert('Base64 PDF Copied to Clipboard!') 
+        } else {
+          alert('Clipboard is empty!')
+        }
+           
       }
 
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <h3>PDF Encoder For IQ x Soon</h3>
+        <Decode prop={FileString}/>
         <Encode prop={SetFileString}/>
         <div>Base64 String <button onClick={copyToClipboard}>COPY</button>:</div>
         <div className={styles.div}>{FileString}</div>

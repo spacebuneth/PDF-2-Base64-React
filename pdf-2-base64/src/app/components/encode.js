@@ -4,7 +4,7 @@ import {useState} from 'react';
 import { useEffect } from 'react';
 
 
-export default function Upload({prop}) {
+export default function Encode({prop}) {
     const [encodedString, SetEncodedString] = useState('')
     useEffect(() => {
         //triggered when state changes
@@ -25,27 +25,15 @@ export default function Upload({prop}) {
         );
 
         if (file) {
-            reader.readAsArrayBuffer(file); // when done reading pdf trigger event
+            reader.readAsDataURL(file); // when done reading pdf trigger event
         }
     };
 
     function EncodePDF(result) {
-        const buffer = result;
-        const binaryString = arrayBufferToBinaryString(buffer);
-        const base64String = btoa(binaryString);
-        SetEncodedString(base64String);
+        const base64String = result;
+        const encoded = base64String.substring(base64String.indexOf(',') +1);
+        SetEncodedString(encoded);
     };
-
-
-    function arrayBufferToBinaryString(buffer) { //helper function
-        let binaryString = '';
-        const bytes = new Uint8Array(buffer);
-        const len = bytes.byteLength;
-        for (let i = 0; i < len; i++) {
-          binaryString += String.fromCharCode(bytes[i]);
-        }
-        return binaryString;
-      }
 
     return (
         <>
