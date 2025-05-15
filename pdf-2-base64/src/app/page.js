@@ -1,6 +1,7 @@
 'use client'
-import Image from "next/image";
+
 import styles from "./page.module.css";
+
 import Encode from "./components/encode";
 import Decode from "./components/decode";
 import Viewer from "./components/viewer";
@@ -24,7 +25,7 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
+      <main className={styles.main }>
         <h3>IQ x Soon Onchain PDF Archive</h3>
         <Encode prop={SetFileString}/>
         <Decode prop={FileString} prop2={SetFileBlob}/>

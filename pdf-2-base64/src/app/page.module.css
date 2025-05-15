@@ -16,6 +16,8 @@
   font-family: var(--font-geist-sans);
 }
 
+
+
 .div {
   font-size: 8px;
   display: block;
@@ -23,6 +25,10 @@
   color: rgb(17, 255, 0);
   inline-size: 600px;
   overflow-wrap: break-word;
+  border-style: inset;
+  border-width: 1px;
+  border-color: rgb(17, 255, 0);
+  padding: 10px;
 }
 
 .main {
