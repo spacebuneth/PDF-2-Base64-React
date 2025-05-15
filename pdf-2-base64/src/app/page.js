@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h3>PDF Encoder For IQ x Soon</h3>
+        <h3>IQ x Soon Onchain PDF Archive</h3>
         <Encode prop={SetFileString}/>
         <Decode prop={FileString} prop2={SetFileBlob}/>
         
