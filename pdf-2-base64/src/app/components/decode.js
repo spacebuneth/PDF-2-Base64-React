@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 
-export default function Decode({prop}) {
+export default function Decode({prop, prop2}) {
   const [FileBlob, SetFileBlob] = useState(null);
     //const base64String = prop;
 
@@ -36,6 +36,7 @@ function base64ToBlob(base64, contentType = "application/pdf",
 
   const blob = new File (byteArrays, 'test', { type: contentType, lastModified: Date.now() });
   SetFileBlob(blob);
+  prop2(blob);
 }
 
     function download() {

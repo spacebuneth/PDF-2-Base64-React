@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 
 export default function Encode({prop}) {
+
     const [encodedString, SetEncodedString] = useState('')
     useEffect(() => {
         //triggered when state changes
